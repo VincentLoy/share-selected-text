@@ -1,0 +1,52 @@
+{
+  "name": "share-selected-text",
+  "description": "Inspired by medium, share blog post by selecting any piece of text inside of it.",
+  "version": "0.0.1",
+  "homepage": "http://vincentloy.github.io/share-selected-text",
+  "author": {
+    "name": "Vincent Loy",
+    "url": "http://vincent-loy.fr",
+    "email": "vincent.loy1@gmail.com"
+  },
+  "keywords": [
+    "twitter",
+    "share",
+    "medium",
+    "social",
+    "stumbleupon",
+    "digg",
+    "delicious",
+    "pinterest",
+    "buffer",
+    "tumblr",
+    "reddit",
+    "plugin",
+    "jquery"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VincentLoy/share-selected-text"
+  },
+  "bugs": {
+    "url": "https://github.com/VincentLoy/share-selected-text/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/VincentLoy/share-selected-text/blob/master/LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "gulp": "^3.9.0",
+    "gulp-asset-manifest": "0.0.6",
+    "gulp-babel": "^5.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.0.3",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.4.1",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1"
+  }
+}

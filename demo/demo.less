@@ -1,0 +1,34 @@
+@lato: 'Lato', sans-serif;
+@merri: 'Merriweather', serif;
+@color-blog-blue: #404658;
+@color-white: white;
+
+.container {
+  width: 720px;
+  margin: auto;
+}
+
+article {
+
+  h1 {
+    font-family: @lato;
+    font-weight: 300;
+    font-size: 40px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid fade(@color-blog-blue, 15%);
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 400;
+    font-family: @lato;
+  }
+
+  p {
+    font-family: @merri;
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+}
