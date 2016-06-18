@@ -1,7 +1,6 @@
 /*vim: fileencoding=utf8 tw=100 expandtab ts=4 sw=4 */
 /*jslint indent: 4, maxlen: 100, node: true */
 
-/*global require*/
 (function () {
     'use strict';
 
@@ -12,6 +11,7 @@
         uglify = require('gulp-uglify'),
         less = require('gulp-less'),
         glob = require('glob'),
+        sourcemaps = require('gulp-sourcemaps'),
 
         LessPluginCleanCSS = require('less-plugin-clean-css'),
         LessPluginAutoPrefix = require('less-plugin-autoprefix'),
@@ -49,7 +49,7 @@
     });
 
     gulp.task('build:less:app', function () {
-        return gulp.src('dev/shareSelectedText.less')
+        return gulp.src(['dev/sst_icons.css', 'dev/shareSelectedText.less'])
             .pipe(plumber({
                 handleError: function (err) {
                     console.log(err);
@@ -63,7 +63,11 @@
             .pipe(gulp.dest('dist'));
     });
 
-    gulp.task('build:all', ['build:app', 'build:less:app', 'build:less:demo']);
+    gulp.task('build:copy:fonts', function () {
+       return gulp.src(['dev/fonts/**/*']).pipe(gulp.dest('dist/fonts'));
+    });
+
+    gulp.task('build:all', ['build:app', 'build:less:app', 'build:less:demo', 'build:copy:fonts']);
 
     gulp.task('watch', function () {
         gulp.watch('dev/shareSelectedText.js', ['build:app']);
