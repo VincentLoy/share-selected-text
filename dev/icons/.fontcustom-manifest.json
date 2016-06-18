@@ -1,0 +1,70 @@
+{
+  "checksum": {
+    "previous": "9d4a7a3bd8e3ce437013ebef2273efb45904fdbf73e8ef359beae55087a57fae",
+    "current": "9d4a7a3bd8e3ce437013ebef2273efb45904fdbf73e8ef359beae55087a57fae"
+  },
+  "fonts": [
+    "../fonts//sst_icons.ttf",
+    "../fonts//sst_icons.svg",
+    "../fonts//sst_icons.woff",
+    "../fonts//sst_icons.eot"
+  ],
+  "glyphs": {
+    "buffer": {
+      "codepoint": 61696,
+      "source": "./buffer.svg"
+    },
+    "digg": {
+      "codepoint": 61697,
+      "source": "./digg.svg"
+    },
+    "linkedin": {
+      "codepoint": 61698,
+      "source": "./linkedin.svg"
+    },
+    "pinterest": {
+      "codepoint": 61699,
+      "source": "./pinterest.svg"
+    },
+    "stumbleupon": {
+      "codepoint": 61700,
+      "source": "./stumbleupon.svg"
+    },
+    "twitter": {
+      "codepoint": 61701,
+      "source": "./twitter.svg"
+    }
+  },
+  "options": {
+    "autowidth": true,
+    "config": "fontcustom.yml",
+    "css_selector": ".icon-{{glyph}}",
+    "debug": true,
+    "font_ascent": 448,
+    "font_descent": 64,
+    "font_design_size": 16,
+    "font_em": 512,
+    "font_name": "sst_icons",
+    "force": false,
+    "input": {
+      "templates": ".",
+      "vectors": "."
+    },
+    "no_hash": true,
+    "output": {
+      "css": "../",
+      "fonts": "../fonts/",
+      "preview": "./"
+    },
+    "preprocessor_path": null,
+    "quiet": false,
+    "templates": [
+      "css",
+      "preview"
+    ]
+  },
+  "templates": [
+    "../sst_icons.css",
+    "./sst_icons-preview.html"
+  ]
+}

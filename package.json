@@ -1,6 +1,6 @@
 {
   "name": "share-selected-text",
-  "description": "Inspired by medium, share blog post by selecting any piece of text inside of it.",
+  "description": "share selected text on twitter, buffer, and some others. Inspired by medium.com",
   "version": "0.0.1",
   "homepage": "http://vincentloy.github.io/share-selected-text",
   "author": {

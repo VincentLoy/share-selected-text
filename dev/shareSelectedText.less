@@ -1,4 +1,7 @@
-@color-blog-blue: #404658;
+@spacing: 10px;
+@spacing-b: @spacing * 2;
+
+@color-blue: #404658;
 @color-white: white;
 
 .share-selected-text-main-container {
@@ -24,8 +27,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: @color-blog-blue;
-    padding: 15px;
+    background: @color-blue;
+    height: 100%;
     pointer-events: auto;
     position: relative;
 
@@ -40,15 +43,25 @@
       height: 0;
       border-style: solid;
       border-width: 7px 7.5px 0 7.5px;
-      border-color: @color-blog-blue transparent transparent transparent;
+      border-color: @color-blue transparent transparent transparent;
     }
   }
 
-  a {
+  .share-selected-text-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-transform: uppercase;
     font-weight: bold;
     color: @color-white;
+    height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 @spacing-b;
+    transition: 0.2s ease all;
+
+    &:focus,
+    &:hover {
+      background: lighten(@color-blue, 7%);
+    }
   }
 }
