@@ -23,8 +23,8 @@
         stumbleupon: 'stumbleupon'
     };
 
-    const NO_START_WITH = /[ .,!?/\\\+-=*£$€:~§%^µ)(|@"{}&#><_]/g;
-    const NO_ENDS_WITH = /[ /\\\+-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    const NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    const NO_ENDS_WITH = /[ ,/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
 
     // globals
     let tooltip;
@@ -55,21 +55,7 @@
         tooltip.classList.add('active');
     };
 
-    let sanitizeText = function (text, sociaType = '') {
-        let author = '';
-        let tweetLimit = REAL_TWITTER_LIMIT;
-
-        if (!text) {
-            return '';
-        }
-
-        if (text.length > REAL_TWITTER_LIMIT) {
-            text = text.substring(0, tweetLimit) + '...';
-        } else {
-            text = text.substring(0, tweetLimit + TWITTER_DOTS);
-        }
-
-
+    let smartSanitize = function (text) {
         while (text.length && text[0].match(NO_START_WITH)) {
             text = text.substring(1, text.length);
         }
@@ -78,17 +64,37 @@
             text = text.substring(0, text.length - 1);
         }
 
+        return text;
+    };
+
+    let sanitizeText = function (text, sociaType = '') {
+        let author = '';
+        let tweetLimit = REAL_TWITTER_LIMIT;
+
+        if (!text) {
+            return '';
+        }
+
         if (parameters.twitterUsername && sociaType === SOCIAL.twitter) {
             author = ` via @${parameters.twitterUsername}`;
             tweetLimit = REAL_TWITTER_LIMIT - author.length;
         }
 
-        return text;
+        if (text.length > REAL_TWITTER_LIMIT) {
+            text = text.substring(0, tweetLimit);
+            text = text.substring(0, text.lastIndexOf(' ')) + '...';
+        } else {
+            text = text.substring(0, tweetLimit + TWITTER_DOTS);
+        }
+
+        return smartSanitize(text);
     };
 
     let generateSocialUrl = function (socialType, text) {
         if (parameters.sanitize) {
             text = sanitizeText(text, socialType);
+        } else {
+            text = smartSanitize(text);
         }
 
         let twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text="${text}"`;

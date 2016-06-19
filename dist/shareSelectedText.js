@@ -24,8 +24,8 @@
         stumbleupon: 'stumbleupon'
     };
 
-    var NO_START_WITH = /[ .,!?/\\\+-=*£$€:~§%^µ)(|@"{}&#><_]/g;
-    var NO_ENDS_WITH = /[ /\\\+-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    var NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    var NO_ENDS_WITH = /[ ,/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
 
     // globals
     var tooltip = undefined;
@@ -56,6 +56,18 @@
         tooltip.classList.add('active');
     };
 
+    var smartSanitize = function smartSanitize(text) {
+        while (text.length && text[0].match(NO_START_WITH)) {
+            text = text.substring(1, text.length);
+        }
+
+        while (text.length && text[text.length - 1].match(NO_ENDS_WITH)) {
+            text = text.substring(0, text.length - 1);
+        }
+
+        return text;
+    };
+
     var sanitizeText = function sanitizeText(text) {
         var sociaType = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
 
@@ -66,31 +78,26 @@
             return '';
         }
 
-        if (text.length > REAL_TWITTER_LIMIT) {
-            text = text.substring(0, tweetLimit) + '...';
-        } else {
-            text = text.substring(0, tweetLimit + TWITTER_DOTS);
-        }
-
-        while (text.length && text[0].match(NO_START_WITH)) {
-            text = text.substring(1, text.length);
-        }
-
-        while (text.length && text[text.length - 1].match(NO_ENDS_WITH)) {
-            text = text.substring(0, text.length - 1);
-        }
-
         if (parameters.twitterUsername && sociaType === SOCIAL.twitter) {
             author = ' via @' + parameters.twitterUsername;
             tweetLimit = REAL_TWITTER_LIMIT - author.length;
         }
 
-        return text;
+        if (text.length > REAL_TWITTER_LIMIT) {
+            text = text.substring(0, tweetLimit);
+            text = text.substring(0, text.lastIndexOf(' ')) + '...';
+        } else {
+            text = text.substring(0, tweetLimit + TWITTER_DOTS);
+        }
+
+        return smartSanitize(text);
     };
 
     var generateSocialUrl = function generateSocialUrl(socialType, text) {
         if (parameters.sanitize) {
             text = sanitizeText(text, socialType);
+        } else {
+            text = smartSanitize(text);
         }
 
         var twitterUrl = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text="' + text + '"';
