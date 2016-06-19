@@ -1,7 +1,7 @@
 {
   "name": "share-selected-text",
-  "description": "share selected text on twitter, buffer, and some others. Inspired by medium.com",
-  "version": "0.0.1",
+  "description": "share selected text on twitter, buffer, stumbleupon, digg, tumblr & reddit. Inspired by medium.com",
+  "version": "1.0.0",
   "homepage": "http://vincentloy.github.io/share-selected-text",
   "author": {
     "name": "Vincent Loy",
@@ -9,19 +9,20 @@
     "email": "vincent.loy1@gmail.com"
   },
   "keywords": [
-    "twitter",
     "share",
+    "selection",
     "medium",
     "social",
+    "twitter",
     "stumbleupon",
     "digg",
-    "delicious",
-    "pinterest",
-    "buffer",
     "tumblr",
     "reddit",
+    "buffer",
+    "tooltip",
     "plugin",
-    "jquery"
+    "jquery",
+    "vanilla"
   ],
   "repository": {
     "type": "git",

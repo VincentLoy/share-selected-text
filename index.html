@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>tweetParser.js</title>
+    <title>shareSelectedText.js</title>
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300' rel='stylesheet' type='text/css'>
@@ -16,11 +16,11 @@
 
 <body>
 <main class="container">
-        <article>
+        <article class="demo-article">
             <header>
                 <h1>Introducting : shareSelectedText.js</h1>
             </header>
-            <section class="demo-article">
+            <section>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis impedit in nisi officiis sequi
                     voluptas. Alias aliquid amet at commodi, doloribus eum fugiat itaque minima minus, nesciunt omnis
@@ -29,6 +29,8 @@
                 </p>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, nobis!</p>
+
+                <img src="demo/sst.jpg" alt="share selected text javascript plugin - shareSelectedText.js">
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos eveniet excepturi facere nobis
                     omnis, quaerat repudiandae ullam voluptas voluptates? Sed.</p>
@@ -61,35 +63,10 @@
                     voluptatum?</p>
             </section>
         </article>
-
-
-            <section class="documentation">
-                <h2>Getting started</h2>
-<pre>
-<code class="language-javascript">
-    //basic usage
-    tweetParser('.tweet');
-
-    //With Default parameters
-    tweetParser('.tweet', {
-        urlClass : "tweet_link", //this is default
-        userClass : "tweet_user", //this is default
-        hashtagClass : "hashtag", //this is default
-        target : "_blank", //this is default
-        searchWithHashtags : true //this is default
-        parseUsers : true,
-        parseHashtags : true,
-        parseUrls : true
-    });
-
-    // Note that '.tweet' is your own CSS selector
-</code>
-</pre>
-            </section>
 </main>
 <footer>
     <div class="container">
-        <h4 class="text-center">Made with &hearts; by <a href="http://vincent-loy.fr">Vincent Loy</a></h4>
+        <h4>Made with &hearts; by <a href="http://vincent-loy.fr">Vincent Loy</a></h4>
     </div>
 </footer>
 

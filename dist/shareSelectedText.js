@@ -6,28 +6,42 @@
 (function (exports) {
     'use strict';
 
+    var getPageUrl = function getPageUrl() {
+        if (document.querySelector('meta[property="og:url"]') && document.querySelector('meta[property="og:url"]').getAttribute('content')) {
+            return document.querySelector('meta[property="og:url"]').getAttribute('content');
+        }
+
+        return window.location.href;
+    };
+
     // constants
     var TOOLTIP_HEIGHT = 50;
     var FACTOR = 1.33;
     var TWITTER_LIMIT_LENGTH = 140;
     var TWITTER_URL_LENGTH_COUNT = 24;
-    var TWITTER_COMMAS = 2;
+    var TWITTER_QUOTES = 2;
     var TWITTER_DOTS = 3;
+    var TOOLTIP_TIMEOUT = 250;
 
-    var REAL_TWITTER_LIMIT = TWITTER_LIMIT_LENGTH - TWITTER_URL_LENGTH_COUNT - TWITTER_COMMAS - TWITTER_DOTS;
+    var REAL_TWITTER_LIMIT = TWITTER_LIMIT_LENGTH - TWITTER_URL_LENGTH_COUNT - TWITTER_QUOTES - TWITTER_DOTS;
 
     var SOCIAL = {
         twitter: 'twitter',
         buffer: 'buffer',
         digg: 'digg',
         linkedin: 'linkedin',
-        stumbleupon: 'stumbleupon'
+        stumbleupon: 'stumbleupon',
+        reddit: 'reddit',
+        tumblr: 'tumblr'
     };
+
+    var NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    var NO_ENDS_WITH = /[ ,/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    var PAGE_URL = getPageUrl();
 
     // globals
     var tooltip = undefined;
     var parameters = undefined;
-    var pageUrl = window.location.href;
     var selected = {};
 
     var extend = function extend(out) {
@@ -45,18 +59,6 @@
         return out;
     };
 
-    var sanitizeForTweet = function sanitizeForTweet(text) {
-        if (!text) {
-            return '';
-        }
-
-        if (text.length > REAL_TWITTER_LIMIT) {
-            return text.substring(0, REAL_TWITTER_LIMIT) + '...';
-        }
-
-        return text.substring(0, REAL_TWITTER_LIMIT + TWITTER_DOTS);
-    };
-
     var hideTooltip = function hideTooltip() {
         tooltip.classList.remove('active');
     };
@@ -65,20 +67,71 @@
         tooltip.classList.add('active');
     };
 
+    var smartSanitize = function smartSanitize(text) {
+        while (text.length && text[0].match(NO_START_WITH)) {
+            text = text.substring(1, text.length);
+        }
+
+        while (text.length && text[text.length - 1].match(NO_ENDS_WITH)) {
+            text = text.substring(0, text.length - 1);
+        }
+
+        return text;
+    };
+
+    var sanitizeText = function sanitizeText(text) {
+        var sociaType = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
+
+        var author = '';
+        var tweetLimit = REAL_TWITTER_LIMIT;
+
+        if (!text) {
+            return '';
+        }
+
+        if (parameters.twitterUsername && sociaType === SOCIAL.twitter) {
+            author = ' via @' + parameters.twitterUsername;
+            tweetLimit = REAL_TWITTER_LIMIT - author.length;
+        }
+
+        if (text.length > REAL_TWITTER_LIMIT) {
+            text = text.substring(0, tweetLimit);
+            text = text.substring(0, text.lastIndexOf(' ')) + '...';
+        } else {
+            text = text.substring(0, tweetLimit + TWITTER_DOTS);
+        }
+
+        return smartSanitize(text);
+    };
+
     var generateSocialUrl = function generateSocialUrl(socialType, text) {
         if (parameters.sanitize) {
-            text = sanitizeForTweet(text);
+            text = sanitizeText(text, socialType);
+        } else {
+            text = smartSanitize(text);
+        }
+
+        var twitterUrl = 'https://twitter.com/intent/tweet?url=' + PAGE_URL + '&text="' + text + '"';
+
+        if (parameters.twitterUsername && parameters.twitterUsername.length) {
+            twitterUrl += '&via=' + parameters.twitterUsername;
         }
 
         var urls = {
-            twitter: 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text="' + text + '"',
-            buffer: 'https://buffer.com/add?text="' + text + '"&url=' + pageUrl,
-            digg: 'http://digg.com/submit?url=' + pageUrl + '&title=' + text,
-            linkedin: 'https://www.linkedin.com/shareArticle?url=' + pageUrl + '&title=' + text,
-            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + pageUrl + '&title=' + text
+            twitter: twitterUrl,
+            buffer: 'https://buffer.com/add?text="' + text + '"&url=' + PAGE_URL,
+            digg: 'http://digg.com/submit?url=' + PAGE_URL + '&title=' + text,
+            linkedin: 'https://www.linkedin.com/shareArticle?url=' + PAGE_URL + '&title=' + text,
+            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + PAGE_URL + '&title=' + text,
+            reddit: 'https://reddit.com/submit?url=' + PAGE_URL + '&title=' + text,
+            tumblr: 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' + PAGE_URL + '&caption=' + text
         };
 
-        return urls[socialType];
+        if (urls.hasOwnProperty(socialType)) {
+            return urls[socialType];
+        }
+
+        return '';
     };
 
     var updateTooltip = function updateTooltip(rect) {
@@ -94,7 +147,7 @@
 
         window.setTimeout(function () {
             showTooltip();
-        }, 250);
+        }, parameters.tooltipTimeout);
     };
 
     var generateAnchorTag = function generateAnchorTag(anchorType) {
@@ -156,8 +209,8 @@
     };
 
     var getSelectedText = function getSelectedText() {
-        var text = '',
-            selection = undefined;
+        var text = '';
+        var selection = undefined;
 
         if (window.getSelection) {
             selection = window.getSelection();
@@ -193,7 +246,8 @@
             sanitize: true,
             buttons: [SOCIAL.twitter, SOCIAL.buffer],
             anchorsClass: '',
-            twitterVia: 'PastaWS'
+            twitterUsername: '',
+            tooltipTimeout: TOOLTIP_TIMEOUT
         }, args);
 
         tooltip = generateTooltip();
@@ -204,8 +258,6 @@
             });
         });
     };
-
-    //exports.shareSelectedText = shareSelectedText;
 })(window);
 
 /*global jQuery, shareSelectedText*/
