@@ -1,7 +1,13 @@
 @lato: 'Lato', sans-serif;
 @merri: 'Merriweather', serif;
-@color-blog-blue: #404658;
+@color-blue: #404658;
 @color-white: white;
+@spacing: 10px;
+
+body, html {
+  padding: 0;
+  margin: 0;
+}
 
 .container {
   width: 720px;
@@ -9,6 +15,19 @@
 }
 
 article {
+  header {
+    img {
+      width: 100%;
+      margin: (@spacing * 2) 0;
+      padding: @spacing;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+      &:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+    }
+  }
 
   h1 {
     font-family: @lato;
@@ -16,7 +35,8 @@ article {
     font-size: 40px;
     padding-bottom: 20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid fade(@color-blog-blue, 15%);
+    margin-top: 0;
+    border-bottom: 1px solid fade(@color-blue, 15%);
   }
 
   h2 {
@@ -31,4 +51,9 @@ article {
     line-height: 1.7;
     font-weight: 300;
   }
+}
+
+footer {
+  text-align: center;
+  font-family: @lato;
 }
