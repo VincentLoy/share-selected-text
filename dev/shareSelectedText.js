@@ -20,6 +20,7 @@
     const TWITTER_URL_LENGTH_COUNT = 24;
     const TWITTER_QUOTES = 2;
     const TWITTER_DOTS = 3;
+    const TOOLTIP_TIMEOUT = 250;
 
     const REAL_TWITTER_LIMIT = TWITTER_LIMIT_LENGTH - TWITTER_URL_LENGTH_COUNT -
         TWITTER_QUOTES - TWITTER_DOTS;
@@ -144,7 +145,7 @@
 
         window.setTimeout(function () {
             showTooltip();
-        }, 250);
+        }, parameters.tooltipTimeout);
     };
 
     let generateAnchorTag = function (anchorType, customIconClass = null) {
@@ -248,7 +249,8 @@
                 SOCIAL.buffer
             ],
             anchorsClass: '',
-            twitterUsername: ''
+            twitterUsername: '',
+            tooltipTimeout: TOOLTIP_TIMEOUT
         }, args);
 
         tooltip = generateTooltip();
