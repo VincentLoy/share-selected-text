@@ -32,7 +32,7 @@ Add the Javascript file before `body` HTML closing tag.
 Then, you can init the plugin :
 ```javascript
 // plugin initialization with default options
-shareSelectedText({
+shareSelectedText('.my-super-selector', {
     tooltipClass: '',    // cool, if you want to customize the tooltip
     sanitize: true,      // will sanitize the user selection to respect the Twitter Max length (recommended) 
     buttons: [           // services that you want to enable you can add : 
