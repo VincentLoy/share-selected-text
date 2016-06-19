@@ -9,11 +9,11 @@
     const FACTOR = 1.33;
     const TWITTER_LIMIT_LENGTH = 140;
     const TWITTER_URL_LENGTH_COUNT = 24;
-    const TWITTER_COMMAS = 2;
+    const TWITTER_QUOTES = 2;
     const TWITTER_DOTS = 3;
 
     const REAL_TWITTER_LIMIT = TWITTER_LIMIT_LENGTH - TWITTER_URL_LENGTH_COUNT -
-        TWITTER_COMMAS - TWITTER_DOTS;
+        TWITTER_QUOTES - TWITTER_DOTS;
 
     const SOCIAL = {
         twitter: 'twitter',
@@ -22,6 +22,9 @@
         linkedin: 'linkedin',
         stumbleupon: 'stumbleupon'
     };
+
+    const NO_START_WITH = /[ .,!?/\\\+-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    const NO_ENDS_WITH = /[ /\\\+-=*£$€:~§%^µ)(|@"{}&#><_]/g;
 
     // globals
     let tooltip;
@@ -44,18 +47,6 @@
         return out;
     };
 
-    let sanitizeForTweet = function (text) {
-        if (!text) {
-            return '';
-        }
-
-        if (text.length > REAL_TWITTER_LIMIT) {
-            return text.substring(0, REAL_TWITTER_LIMIT) + '...';
-        }
-
-        return text.substring(0, REAL_TWITTER_LIMIT + TWITTER_DOTS);
-    };
-
     let hideTooltip = function () {
         tooltip.classList.remove('active');
     };
@@ -64,13 +55,51 @@
         tooltip.classList.add('active');
     };
 
+    let sanitizeText = function (text, sociaType = '') {
+        let author = '';
+        let tweetLimit = REAL_TWITTER_LIMIT;
+
+        if (!text) {
+            return '';
+        }
+
+        if (text.length > REAL_TWITTER_LIMIT) {
+            text = text.substring(0, tweetLimit) + '...';
+        } else {
+            text = text.substring(0, tweetLimit + TWITTER_DOTS);
+        }
+
+
+        while (text.length && text[0].match(NO_START_WITH)) {
+            text = text.substring(1, text.length);
+        }
+
+        while (text.length && text[text.length - 1].match(NO_ENDS_WITH)) {
+            text = text.substring(0, text.length - 1);
+        }
+
+        if (parameters.twitterUsername && sociaType === SOCIAL.twitter) {
+            author = ` via @${parameters.twitterUsername}`;
+            tweetLimit = REAL_TWITTER_LIMIT - author.length;
+        }
+
+        return text;
+    };
+
     let generateSocialUrl = function (socialType, text) {
         if (parameters.sanitize) {
-            text = sanitizeForTweet(text);
+            text = sanitizeText(text, socialType);
+        }
+
+        let twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text="${text}"`;
+
+        if (parameters.twitterUsername && parameters.twitterUsername.length) {
+            twitterUrl =
+                `https://twitter.com/intent/tweet?url=${pageUrl}&text="${text}"&via=${parameters.twitterUsername}`
         }
 
         let urls = {
-            twitter: `https://twitter.com/intent/tweet?url=${pageUrl}&text="${text}"`,
+            twitter: twitterUrl,
             buffer: `https://buffer.com/add?text="${text}"&url=${pageUrl}`,
             digg: `http://digg.com/submit?url=${pageUrl}&title=${text}`,
             linkedin: `https://www.linkedin.com/shareArticle?url=${pageUrl}&title=${text}`,
@@ -147,7 +176,7 @@
 
         Array.prototype.forEach.call(parameters.buttons, function (btn) {
             let aTag = generateAnchorTag(btn);
-                btnContainer.appendChild(aTag);
+            btnContainer.appendChild(aTag);
         });
 
         mainDiv.appendChild(btnContainer);
@@ -197,7 +226,7 @@
                 SOCIAL.buffer
             ],
             anchorsClass: '',
-            twitterVia: 'PastaWS'
+            twitterUsername: ''
         }, args);
 
         tooltip = generateTooltip();
