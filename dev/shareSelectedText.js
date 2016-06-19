@@ -265,8 +265,6 @@
             });
         });
     };
-
-    //exports.shareSelectedText = shareSelectedText;
 }(window));
 
 /*global jQuery, shareSelectedText*/
