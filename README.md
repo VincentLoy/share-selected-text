@@ -3,4 +3,4 @@
 
 ![share selected text - ShareSelectedText.js](demo/sst.jpg)
 
-Still in dev. do not use.
+**Still in dev. do not use.**
