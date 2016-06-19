@@ -208,8 +208,8 @@
     };
 
     var getSelectedText = function getSelectedText() {
-        var text = '',
-            selection = undefined;
+        var text = '';
+        var selection = undefined;
 
         if (window.getSelection) {
             selection = window.getSelection();

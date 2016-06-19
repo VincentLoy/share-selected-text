@@ -208,8 +208,8 @@
     };
 
     let getSelectedText = function () {
-        let text = '',
-            selection;
+        let text = '';
+        let selection;
 
         if (window.getSelection) {
             selection = window.getSelection();
