@@ -115,10 +115,6 @@
             twitterUrl += `&via=${parameters.twitterUsername}`;
         }
 
-        if (parameters.hashtags && parameters.hashtags.length) {
-            twitterUrl += `&via=${parameters.twitterUsername}`;
-        }
-
         let urls = {
             twitter: twitterUrl,
             buffer: `https://buffer.com/add?text="${text}"&url=${PAGE_URL}`,
