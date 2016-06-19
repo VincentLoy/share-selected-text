@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "bf8e17a096845352658cf9c594f6fd4f3a900384fd20eb4b4ba3f8031d931ca4",
-    "current": "bf8e17a096845352658cf9c594f6fd4f3a900384fd20eb4b4ba3f8031d931ca4"
+    "previous": "2e7f8bcd45ad9b72f3c63368b4280bc6a9b120e5667d55e3c2a67c04c277ceb8",
+    "current": "2e7f8bcd45ad9b72f3c63368b4280bc6a9b120e5667d55e3c2a67c04c277ceb8"
   },
   "fonts": [
     "../fonts/sst_icons.ttf",
@@ -29,6 +29,10 @@
     "stumbleupon": {
       "codepoint": 61700,
       "source": "./stumbleupon.svg"
+    },
+    "tumblr": {
+      "codepoint": 61703,
+      "source": "./tumblr.svg"
     },
     "twitter": {
       "codepoint": 61701,

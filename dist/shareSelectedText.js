@@ -31,7 +31,8 @@
         digg: 'digg',
         linkedin: 'linkedin',
         stumbleupon: 'stumbleupon',
-        reddit: 'reddit'
+        reddit: 'reddit',
+        tumblr: 'tumblr'
     };
 
     var NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
@@ -126,7 +127,8 @@
             digg: 'http://digg.com/submit?url=' + PAGE_URL + '&title=' + text,
             linkedin: 'https://www.linkedin.com/shareArticle?url=' + PAGE_URL + '&title=' + text,
             stumbleupon: 'http://www.stumbleupon.com/submit?url=' + PAGE_URL + '&title=' + text,
-            reddit: 'https://reddit.com/submit?url=' + PAGE_URL + '&title=' + text
+            reddit: 'https://reddit.com/submit?url=' + PAGE_URL + '&title=' + text,
+            tumblr: 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' + PAGE_URL + '&caption=' + text
         };
 
         if (urls.hasOwnProperty(socialType)) {
@@ -246,7 +248,7 @@
         parameters = extend({
             tooltipClass: '',
             sanitize: true,
-            buttons: [SOCIAL.twitter, SOCIAL.reddit, SOCIAL.buffer],
+            buttons: [SOCIAL.twitter, SOCIAL.buffer],
             anchorsClass: '',
             twitterUsername: '',
             tooltipTimeout: TOOLTIP_TIMEOUT

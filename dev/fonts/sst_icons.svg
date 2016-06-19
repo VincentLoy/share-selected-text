@@ -5,7 +5,7 @@
 -->
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Sun Jun 19 15:41:59 2016
+Created by FontForge 20120731 at Sun Jun 19 16:02:14 2016
  By Vincent Loy,,,
 Created by Vincent Loy,,, with FontForge 2.0 (http://fontforge.sf.net)
 </metadata>
@@ -22,7 +22,7 @@ Created by Vincent Loy,,, with FontForge 2.0 (http://fontforge.sf.net)
     bbox="-0.25 -64.25 512 448"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+0020-F106"
+    unicode-range="U+0020-F107"
   />
     <missing-glyph />
     <glyph glyph-name="space" unicode=" " horiz-adv-x="200" 
@@ -44,6 +44,9 @@ c0 19 6 38 15 53c52 -64 129 -106 216 -110c-2 8 -3 16 -3 24c0 58 47 105 105 105c3
     <glyph glyph-name="uniF102" unicode="&#xf102;" 
 d="M512 137v-190h-110v177c0 44 -15 75 -55 75c-30 0 -49 -21 -57 -41c-3 -7 -3 -16 -3 -26v-185h-110s1 299 0 330h110v-46l-1 -1h1v1c15 22 41 54 99 54c72 0 126 -47 126 -148zM62 437c38 0 60 -25 61 -57c0 -32 -24 -57 -62 -57v0c-37 0 -61 25 -61 57s24 57 62 57z
 M7 -53v330h109v-330h-109z" />
+    <glyph glyph-name="uniF107" unicode="&#xf107;" horiz-adv-x="312" 
+d="M312 -36c-22 -10 -41 -18 -59 -22s-37 -6 -57 -6c-23 0 -43 3 -61 9s-33 14 -46 25s-21 23 -26 35s-7 31 -7 54v179h-56v73c20 7 37 16 51 28s25 27 34 44s15 39 18 65h72v-129h120v-81h-120v-131c0 -30 2 -49 5 -57s9 -15 17 -20c11 -7 24 -11 38 -11c26 0 52 9 77 26
+v-81v0z" />
     <glyph glyph-name="uniF101" unicode="&#xf101;" 
 d="M196 346c5 0 9 -4 9 -9v-34c0 -5 -4 -9 -9 -9h-34c-5 0 -8 4 -8 9v34c0 5 3 9 8 9h34zM196 274c5 0 9 -4 9 -9v-157c0 -5 -4 -8 -9 -8h-34c-5 0 -8 3 -8 8v157c0 5 3 9 8 9h34zM503 274c5 0 9 -4 9 -9v-218c0 -5 -4 -9 -9 -9h-116c-5 0 -8 4 -8 9v24c0 5 3 8 8 8h65
 c5 0 9 4 9 9v3c0 5 -4 9 -9 9h-65c-5 0 -8 3 -8 8v157c0 5 3 9 8 9h116zM461 149v75c0 5 -4 9 -9 9h-13c-5 0 -9 -4 -9 -9v-75c0 -5 4 -8 9 -8h13c5 0 9 3 9 8zM125 346c5 0 8 -4 8 -9v-229c0 -5 -3 -8 -8 -8h-116c-5 0 -9 3 -9 8v157c0 5 4 9 9 9h64c5 0 9 3 9 8v55

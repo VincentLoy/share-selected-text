@@ -28,6 +28,7 @@
 .icon-linkedin:before,
 .icon-reddit:before,
 .icon-stumbleupon:before,
+.icon-tumblr:before,
 .icon-twitter:before {
   display: inline-block;
   font-family: "sst_icons";
@@ -48,4 +49,5 @@
 .icon-linkedin:before { content: "\f102"; }
 .icon-reddit:before { content: "\f106"; }
 .icon-stumbleupon:before { content: "\f104"; }
+.icon-tumblr:before { content: "\f107"; }
 .icon-twitter:before { content: "\f105"; }
