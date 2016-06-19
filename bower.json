@@ -1,36 +1,42 @@
 {
-  "name": "tweetparser.js",
-  "version": "2.2.0",
-  "homepage": "https://github.com/VincentLoy/tweetParser.js",
+  "name": "share-selected-text",
+  "version": "1.0.0",
+  "homepage": "https://github.com/VincentLoy/share-selected-text",
   "authors": [
     "VincentLoy <vincent.loy1@gmail.com>"
   ],
-  "description": "Small Javascript Library that parse Twitter Usernames, Hashtags and URLs",
+  "description": "share selected text on twitter, buffer, stumbleupon, digg, tumblr & reddit. Inspired by medium.com",
   "main": [
-    "dist/tweetParser.min.js",
-    "dev/tweetParser.js"
+    "dist/shareSelectedText.min.js",
+    "dist/shareSelectedText.min.css",
+    "dist/fonts/sst_icons.eot",
+    "dist/fonts/sst_icons.svg",
+    "dist/fonts/sst_icons.ttf",
+    "dist/fonts/sst_icons.woof"
   ],
   "keywords": [
-    "jquery",
-    "plugin",
+    "share",
+    "selection",
+    "medium",
+    "social",
     "twitter",
-    "tweet",
-    "parser",
-    "parse",
-    "username",
-    "hashtag",
-    "url",
-    "minimal"
+    "stumbleupon",
+    "digg",
+    "tumblr",
+    "reddit",
+    "buffer",
+    "tooltip",
+    "plugin",
+    "jquery",
+    "vanilla"
   ],
   "license": "MIT",
   "ignore": [
-    "node_modules",
-    "bower_components",
-    "*.md"
-  ],
-  "devDependencies": {
-    "jquery": "~2.1.2",
-    "lesshat": "~3.0.0",
-    "prism": "*"
-  }
+    "dev/",
+    ".editorconfig",
+    ".gitignore",
+    ".eslintrc",
+    "gulpfile.js",
+    "package.json"
+  ]
 }
