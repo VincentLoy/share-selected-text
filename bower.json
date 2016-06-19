@@ -1,18 +1,13 @@
 {
   "name": "share-selected-text",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/VincentLoy/share-selected-text",
   "authors": [
     "VincentLoy <vincent.loy1@gmail.com>"
   ],
   "description": "share selected text on twitter, buffer, stumbleupon, digg, tumblr & reddit. Inspired by medium.com",
   "main": [
-    "dist/shareSelectedText.min.js",
-    "dist/shareSelectedText.min.css",
-    "dist/fonts/sst_icons.eot",
-    "dist/fonts/sst_icons.svg",
-    "dist/fonts/sst_icons.ttf",
-    "dist/fonts/sst_icons.woof"
+    "dev/shareSelectedText.js"
   ],
   "keywords": [
     "share",
