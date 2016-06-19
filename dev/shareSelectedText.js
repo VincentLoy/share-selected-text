@@ -112,7 +112,11 @@
             stumbleupon: `http://www.stumbleupon.com/submit?url=${pageUrl}&title=${text}`
         };
 
-        return urls[socialType];
+        if (urls.hasOwnProperty(socialType)) {
+            return urls[socialType];
+        }
+
+        return '';
     };
 
     let updateTooltip = function (rect) {
