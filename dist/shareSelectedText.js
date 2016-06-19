@@ -21,6 +21,7 @@
     var TWITTER_URL_LENGTH_COUNT = 24;
     var TWITTER_QUOTES = 2;
     var TWITTER_DOTS = 3;
+    var TOOLTIP_TIMEOUT = 250;
 
     var REAL_TWITTER_LIMIT = TWITTER_LIMIT_LENGTH - TWITTER_URL_LENGTH_COUNT - TWITTER_QUOTES - TWITTER_DOTS;
 
@@ -29,7 +30,8 @@
         buffer: 'buffer',
         digg: 'digg',
         linkedin: 'linkedin',
-        stumbleupon: 'stumbleupon'
+        stumbleupon: 'stumbleupon',
+        reddit: 'reddit'
     };
 
     var NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
@@ -123,7 +125,8 @@
             buffer: 'https://buffer.com/add?text="' + text + '"&url=' + PAGE_URL,
             digg: 'http://digg.com/submit?url=' + PAGE_URL + '&title=' + text,
             linkedin: 'https://www.linkedin.com/shareArticle?url=' + PAGE_URL + '&title=' + text,
-            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + PAGE_URL + '&title=' + text
+            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + PAGE_URL + '&title=' + text,
+            reddit: 'https://reddit.com/submit?url=' + PAGE_URL + '&title=' + text
         };
 
         if (urls.hasOwnProperty(socialType)) {
@@ -146,7 +149,7 @@
 
         window.setTimeout(function () {
             showTooltip();
-        }, 250);
+        }, parameters.tooltipTimeout);
     };
 
     var generateAnchorTag = function generateAnchorTag(anchorType) {
@@ -243,9 +246,10 @@
         parameters = extend({
             tooltipClass: '',
             sanitize: true,
-            buttons: [SOCIAL.twitter, SOCIAL.buffer],
+            buttons: [SOCIAL.twitter, SOCIAL.reddit, SOCIAL.buffer],
             anchorsClass: '',
-            twitterUsername: ''
+            twitterUsername: '',
+            tooltipTimeout: TOOLTIP_TIMEOUT
         }, args);
 
         tooltip = generateTooltip();

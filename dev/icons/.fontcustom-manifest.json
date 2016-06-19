@@ -1,13 +1,13 @@
 {
   "checksum": {
-    "previous": "9d4a7a3bd8e3ce437013ebef2273efb45904fdbf73e8ef359beae55087a57fae",
-    "current": "9d4a7a3bd8e3ce437013ebef2273efb45904fdbf73e8ef359beae55087a57fae"
+    "previous": "bf8e17a096845352658cf9c594f6fd4f3a900384fd20eb4b4ba3f8031d931ca4",
+    "current": "bf8e17a096845352658cf9c594f6fd4f3a900384fd20eb4b4ba3f8031d931ca4"
   },
   "fonts": [
-    "../fonts//sst_icons.ttf",
-    "../fonts//sst_icons.svg",
-    "../fonts//sst_icons.woff",
-    "../fonts//sst_icons.eot"
+    "../fonts/sst_icons.ttf",
+    "../fonts/sst_icons.svg",
+    "../fonts/sst_icons.woff",
+    "../fonts/sst_icons.eot"
   ],
   "glyphs": {
     "buffer": {
@@ -22,9 +22,9 @@
       "codepoint": 61698,
       "source": "./linkedin.svg"
     },
-    "pinterest": {
-      "codepoint": 61699,
-      "source": "./pinterest.svg"
+    "reddit": {
+      "codepoint": 61702,
+      "source": "./reddit.svg"
     },
     "stumbleupon": {
       "codepoint": 61700,
@@ -53,7 +53,7 @@
     "no_hash": true,
     "output": {
       "css": "../",
-      "fonts": "../fonts/",
+      "fonts": "../fonts",
       "preview": "./"
     },
     "preprocessor_path": null,
