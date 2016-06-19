@@ -138,7 +138,7 @@
         tooltip.style.top = actualPosition + rect.top - (TOOLTIP_HEIGHT * FACTOR) + 'px';
         tooltip.style.left = (rect.left + (rect.width / 2) - (body.getBoundingClientRect().width / 2)) + 'px';
 
-        Array.prototype.forEach.call(parameters.buttons, function (btn) {
+        Array.prototype.forEach.call(parameters.buttons, (btn) => {
             tooltip.querySelector(`.share-selected-text-btn-${btn}`).href = generateSocialUrl(btn, selected.text);
         });
 
@@ -168,7 +168,7 @@
         }
 
         anchorIcon.style.pointerEvents = 'none';
-        anchorTag.addEventListener('click', function (e) {
+        anchorTag.addEventListener('click', (e) => {
             e.preventDefault();
             let windowFeatures = 'status=no,menubar=no,location=no,scrollbars=no,width=720,height=540';
             let url = e.target.href;
@@ -196,7 +196,7 @@
         mainDiv.style.top = 0;
         mainDiv.style.left = 0;
 
-        Array.prototype.forEach.call(parameters.buttons, function (btn) {
+        Array.prototype.forEach.call(parameters.buttons, (btn) => {
             let aTag = generateAnchorTag(btn);
             btnContainer.appendChild(aTag);
         });
