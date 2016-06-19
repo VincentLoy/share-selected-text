@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "2e7f8bcd45ad9b72f3c63368b4280bc6a9b120e5667d55e3c2a67c04c277ceb8",
-    "current": "2e7f8bcd45ad9b72f3c63368b4280bc6a9b120e5667d55e3c2a67c04c277ceb8"
+    "previous": "2fe9f01490a1db02bfeb3aafd5e6ac18296507a06acf55f53f709f0e89641545",
+    "current": "2fe9f01490a1db02bfeb3aafd5e6ac18296507a06acf55f53f709f0e89641545"
   },
   "fonts": [
     "../fonts/sst_icons.ttf",
@@ -10,33 +10,33 @@
     "../fonts/sst_icons.eot"
   ],
   "glyphs": {
-    "buffer": {
-      "codepoint": 61696,
-      "source": "./buffer.svg"
+    "sst-buffer": {
+      "codepoint": 61704,
+      "source": "./sst-buffer.svg"
     },
-    "digg": {
-      "codepoint": 61697,
-      "source": "./digg.svg"
+    "sst-digg": {
+      "codepoint": 61705,
+      "source": "./sst-digg.svg"
     },
-    "linkedin": {
-      "codepoint": 61698,
-      "source": "./linkedin.svg"
+    "sst-linkedin": {
+      "codepoint": 61706,
+      "source": "./sst-linkedin.svg"
     },
-    "reddit": {
-      "codepoint": 61702,
-      "source": "./reddit.svg"
+    "sst-reddit": {
+      "codepoint": 61707,
+      "source": "./sst-reddit.svg"
     },
-    "stumbleupon": {
-      "codepoint": 61700,
-      "source": "./stumbleupon.svg"
+    "sst-stumbleupon": {
+      "codepoint": 61708,
+      "source": "./sst-stumbleupon.svg"
     },
-    "tumblr": {
-      "codepoint": 61703,
-      "source": "./tumblr.svg"
+    "sst-tumblr": {
+      "codepoint": 61709,
+      "source": "./sst-tumblr.svg"
     },
-    "twitter": {
-      "codepoint": 61701,
-      "source": "./twitter.svg"
+    "sst-twitter": {
+      "codepoint": 61710,
+      "source": "./sst-twitter.svg"
     }
   },
   "options": {
