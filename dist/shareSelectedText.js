@@ -6,6 +6,14 @@
 (function (exports) {
     'use strict';
 
+    var getPageUrl = function getPageUrl() {
+        if (document.querySelector('meta[property="og:url"]') && document.querySelector('meta[property="og:url"]').getAttribute('content')) {
+            return document.querySelector('meta[property="og:url"]').getAttribute('content');
+        }
+
+        return window.location.href;
+    };
+
     // constants
     var TOOLTIP_HEIGHT = 50;
     var FACTOR = 1.33;
@@ -26,11 +34,11 @@
 
     var NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
     var NO_ENDS_WITH = /[ ,/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
+    var PAGE_URL = getPageUrl();
 
     // globals
     var tooltip = undefined;
     var parameters = undefined;
-    var pageUrl = window.location.href;
     var selected = {};
 
     var extend = function extend(out) {
@@ -100,18 +108,22 @@
             text = smartSanitize(text);
         }
 
-        var twitterUrl = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text="' + text + '"';
+        var twitterUrl = 'https://twitter.com/intent/tweet?url=' + PAGE_URL + '&text="' + text + '"';
 
         if (parameters.twitterUsername && parameters.twitterUsername.length) {
-            twitterUrl = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text="' + text + '"&via=' + parameters.twitterUsername;
+            twitterUrl += '&via=' + parameters.twitterUsername;
+        }
+
+        if (parameters.hashtags && parameters.hashtags.length) {
+            twitterUrl += '&via=' + parameters.twitterUsername;
         }
 
         var urls = {
             twitter: twitterUrl,
-            buffer: 'https://buffer.com/add?text="' + text + '"&url=' + pageUrl,
-            digg: 'http://digg.com/submit?url=' + pageUrl + '&title=' + text,
-            linkedin: 'https://www.linkedin.com/shareArticle?url=' + pageUrl + '&title=' + text,
-            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + pageUrl + '&title=' + text
+            buffer: 'https://buffer.com/add?text="' + text + '"&url=' + PAGE_URL,
+            digg: 'http://digg.com/submit?url=' + PAGE_URL + '&title=' + text,
+            linkedin: 'https://www.linkedin.com/shareArticle?url=' + PAGE_URL + '&title=' + text,
+            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + PAGE_URL + '&title=' + text
         };
 
         if (urls.hasOwnProperty(socialType)) {
