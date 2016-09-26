@@ -105,7 +105,7 @@
 
     let generateSocialUrl = function (socialType, text) {
 
-        var facebookText = smartSanitize(text);
+        let facebookText = smartSanitize(text);
 
         if (parameters.sanitize) {
             text = sanitizeText(text, socialType);
@@ -119,12 +119,13 @@
             twitterUrl += `&via=${parameters.twitterUsername}`;
         }
 
-        var facebookUrl = 'https://facebook.com/dialog/share?display=popup&href=' + PAGE_URL + '&quote=' + facebookText;
+        let facebookUrl = `https://facebook.com/dialog/share?display=popup&href=${PAGE_URL}&text="${text}"`;
 
-        if (document.query_selector('meta[property="fb:app_id"]') && document.querySelector('meta[property="fb:app_id"]').getAttribute('content') {
-          facebookUrl += '&app_id=' + document.querySelector('meta[property="fb:app_id"]').getAttribute('content');
+        if (document.querySelector('meta[property="fb:app_id"]') && document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
+          let content = document.querySelector('meta[property="fb:app_id"]');
+          facebookUrl += `&app_id=${content}`;
         } else if (parameters.facebookAppID && parameters.facebookAppID.length) {
-          facebookUrl += '&app_id=' + parameters.facebookAppID;
+          facebookUrl += `&app_id=${parameters.facebookAppID}`;
         } else {
           parameters.buttons.splice(parameters.buttons.indexOf('facebook'),1);
         }
