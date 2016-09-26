@@ -32,7 +32,8 @@
         linkedin: 'linkedin',
         stumbleupon: 'stumbleupon',
         reddit: 'reddit',
-        tumblr: 'tumblr'
+        tumblr: 'tumblr',
+        facebook: 'facebook'
     };
 
     const NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
@@ -103,6 +104,9 @@
     };
 
     let generateSocialUrl = function (socialType, text) {
+
+        var facebookText = smartSanitize(text);
+
         if (parameters.sanitize) {
             text = sanitizeText(text, socialType);
         } else {
@@ -115,6 +119,16 @@
             twitterUrl += `&via=${parameters.twitterUsername}`;
         }
 
+        var facebookUrl = 'https://facebook.com/dialog/share?display=popup&href=' + PAGE_URL + '&quote=' + facebookText;
+
+        if (document.query_selector('meta[property="fb:app_id"]') && document.querySelector('meta[property="fb:app_id"]').getAttribute('content') {
+          facebookUrl += '&app_id=' + document.querySelector('meta[property="fb:app_id"]').getAttribute('content');
+        } else if (parameters.facebookAppID && parameters.facebookAppID.length) {
+          facebookUrl += '&app_id=' + parameters.facebookAppID;
+        } else {
+          parameters.buttons.splice(parameters.buttons.indexOf('facebook'),1);
+        }
+
         let urls = {
             twitter: twitterUrl,
             buffer: `https://buffer.com/add?text="${text}"&url=${PAGE_URL}`,
@@ -122,7 +136,8 @@
             linkedin: `https://www.linkedin.com/shareArticle?url=${PAGE_URL}&title=${text}`,
             stumbleupon: `http://www.stumbleupon.com/submit?url=${PAGE_URL}&title=${text}`,
             reddit: `https://reddit.com/submit?url=${PAGE_URL}&title=${text}`,
-            tumblr: `https://www.tumblr.com/widgets/share/tool?canonicalUrl=${PAGE_URL}&caption=${text}`
+            tumblr: `https://www.tumblr.com/widgets/share/tool?canonicalUrl=${PAGE_URL}&caption=${text}`,
+            facebook: facebookUrl
         };
 
         if (urls.hasOwnProperty(socialType)) {
@@ -250,6 +265,7 @@
             ],
             anchorsClass: '',
             twitterUsername: '',
+            facebookAppID: '',
             tooltipTimeout: TOOLTIP_TIMEOUT
         }, args);
 
