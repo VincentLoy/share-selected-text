@@ -28,7 +28,9 @@
         return gulp.src('dev/shareSelectedText.js')
             .pipe(plumber())
             .pipe(babel())
-            .pipe(uglify())
+            .pipe(uglify({
+                preserveComments: 'some'
+            }))
             .pipe(concat('shareSelectedText.min.js'))
             .pipe(gulp.dest('dist'));
     });
