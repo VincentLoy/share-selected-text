@@ -14,6 +14,7 @@ ShareSelectedText.js currently support the following social medias & services:
 - tumblr
 - digg
 - linkedin
+- facebook
 
 *You can open an issue or follow [the contribution guidelines](#contribution-guidelines) if you want to add another service or social media*
 
@@ -36,14 +37,19 @@ shareSelectedText('.my-super-selector', {
     tooltipClass: '',    // cool, if you want to customize the tooltip
     sanitize: true,      // will sanitize the user selection to respect the Twitter Max length (recommended) 
     buttons: [           // services that you want to enable you can add : 
-        'twitter',       // - twitter, tumblr, buffer, stumbleupon, digg, reddit, linkedin
+        'twitter',       // - twitter, tumblr, buffer, stumbleupon, digg, reddit, linkedin, facebook
         'buffer'
     ],
     anchorsClass: '',    // class given to each tooltip's links
     twitterUsername: '', // for twitter widget, will add 'via @twitterUsername' at the end of the tweet.
+    facebookAppID: '', // Can also be an HTML element inside the <head> tag of your page : <meta property="fb:APP_ID" content="YOUR_APP_ID"/>
+    facebookDisplayMode: 'popup', //can be 'popup' || 'page'
     tooltipTimeout: 250  //Timeout before that the tooltip appear in ms
 });
 ```
+
+## Other Builds
+- Ruby on Rails engine: [share-selected-text_rails](https://github.com/WendyBeth/share-selected-text_rails) by [@WendyBeth](https://github.com/WendyBeth)
 
 ## Contribution Guidelines
 To contribute please consider to respect the following rules:
@@ -58,6 +64,9 @@ To contribute please consider to respect the following rules:
 And don't forget that you are awesome!
 
 ## Changelog
+- v1.1.0
+    - Add Facebook support (Thanks to [@WendyBeth](https://github.com/WendyBeth))
+
 - v1.0.0
     - initial release
 

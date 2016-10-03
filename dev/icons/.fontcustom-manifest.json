@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "2fe9f01490a1db02bfeb3aafd5e6ac18296507a06acf55f53f709f0e89641545",
-    "current": "2fe9f01490a1db02bfeb3aafd5e6ac18296507a06acf55f53f709f0e89641545"
+    "previous": "f659a1138304ae1eb70f73785005c897668abe719150e86506b898414d8635dd",
+    "current": "f659a1138304ae1eb70f73785005c897668abe719150e86506b898414d8635dd"
   },
   "fonts": [
     "../fonts/sst_icons.ttf",
@@ -17,6 +17,10 @@
     "sst-digg": {
       "codepoint": 61705,
       "source": "./sst-digg.svg"
+    },
+    "sst-facebook": {
+      "codepoint": 61711,
+      "source": "./sst-facebook.svg"
     },
     "sst-linkedin": {
       "codepoint": 61706,

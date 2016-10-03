@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2016-6-19: Created.
+2016-10-3: Created.
 -->
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Sun Jun 19 18:05:28 2016
+Created by FontForge 20120731 at Mon Oct  3 21:55:16 2016
  By Vincent Loy,,,
 Created by Vincent Loy,,, with FontForge 2.0 (http://fontforge.sf.net)
 </metadata>
@@ -22,7 +22,7 @@ Created by Vincent Loy,,, with FontForge 2.0 (http://fontforge.sf.net)
     bbox="-0.25 -64.25 512 448"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+0020-F10E"
+    unicode-range="U+0020-F10F"
   />
     <missing-glyph />
     <glyph glyph-name="space" unicode=" " horiz-adv-x="200" 
@@ -49,6 +49,8 @@ d="M196 346c5 0 9 -4 9 -9v-34c0 -5 -4 -9 -9 -9h-34c-5 0 -8 4 -8 9v34c0 5 3 9 8 9
 c5 0 9 4 9 9v3c0 5 -4 9 -9 9h-65c-5 0 -8 3 -8 8v157c0 5 3 9 8 9h116zM461 149v75c0 5 -4 9 -9 9h-13c-5 0 -9 -4 -9 -9v-75c0 -5 4 -8 9 -8h13c5 0 9 3 9 8zM125 346c5 0 8 -4 8 -9v-229c0 -5 -3 -8 -8 -8h-116c-5 0 -9 3 -9 8v157c0 5 4 9 9 9h64c5 0 9 3 9 8v55
 c0 5 3 9 8 9h35zM82 149v75c0 5 -4 9 -9 9h-13c-5 0 -9 -4 -9 -9v-75c0 -5 4 -8 9 -8h13c5 0 9 3 9 8zM350 274c5 0 8 -4 8 -9v-218c0 -5 -3 -9 -8 -9h-116c-5 0 -9 4 -9 9v24c0 5 4 8 9 8h65c5 0 8 4 8 9v3c0 5 -3 9 -8 9h-65c-5 0 -9 3 -9 8v157c0 5 4 9 9 9h116zM307 149
 v75c0 5 -3 9 -8 9h-14c-5 0 -9 -4 -9 -9v-75c0 -5 4 -8 9 -8h14c5 0 8 3 8 8z" />
+    <glyph glyph-name="uniF10F" unicode="&#xf10f;" horiz-adv-x="238" 
+d="M238 282l-9 -90h-72v-256h-106v256h-51v90h51v59c0 42 20 107 107 107h79v-88h-58s-22 -5 -22 -25v-53h81z" />
     <glyph glyph-name="uniF108" unicode="&#xf108;" horiz-adv-x="511" 
 d="M254 448c5 0 10 0 14 -2l233 -97c14 -6 14 -24 0 -29l-233 -101c-8 -3 -19 -3 -28 0l-229 101c-15 8 -15 22 0 29l229 97c3 2 9 2 14 2zM62 230l178 -78c9 -3 18 -4 28 0l182 78l51 -21c14 -8 14 -20 0 -28l-233 -101c-10 -3 -19 -3 -28 0l-229 101c-15 7 -15 21 0 28z
 M62 89l178 -79c9 -3 18 -4 28 0l182 79l51 -21c14 -8 14 -21 0 -29l-233 -101c-10 -3 -19 -3 -28 0l-229 101c-15 7 -15 23 0 29z" />
