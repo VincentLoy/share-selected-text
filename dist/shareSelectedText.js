@@ -1,7 +1,8 @@
 /*!
  * Share Selected Text
- * version 1.1.0
+ * version: 1.1.0
  * license: MIT
+ * url: https://github.com/VincentLoy/share-selected-text
  * author: Vincent Loy <vincent.loy1@gmail.com>
  * contributors:
  *  - Wendy Beth <wendybeth010@gmail.com>
