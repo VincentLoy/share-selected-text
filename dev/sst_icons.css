@@ -25,6 +25,7 @@
 [data-icon]:before,
 .icon-sst-buffer:before,
 .icon-sst-digg:before,
+.icon-sst-facebook:before,
 .icon-sst-linkedin:before,
 .icon-sst-reddit:before,
 .icon-sst-stumbleupon:before,
@@ -46,6 +47,7 @@
 
 .icon-sst-buffer:before { content: "\f108"; }
 .icon-sst-digg:before { content: "\f109"; }
+.icon-sst-facebook:before { content: "\f10f"; }
 .icon-sst-linkedin:before { content: "\f10a"; }
 .icon-sst-reddit:before { content: "\f10b"; }
 .icon-sst-stumbleupon:before { content: "\f10c"; }

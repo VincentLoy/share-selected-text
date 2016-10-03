@@ -1,5 +1,11 @@
-/**
- * Created by vincent on 6/15/16.
+/*!
+ * Share Selected Text
+ * version 1.1.0
+ * license: MIT
+ * author: Vincent Loy <vincent.loy1@gmail.com>
+ * contributors:
+ *  - Wendy Beth <wendybeth010@gmail.com>
+ *  - Dmitry Motorin <dmitry.mot@gmail.com>
  */
 'use strict';
 
@@ -22,6 +28,10 @@
     var TWITTER_QUOTES = 2;
     var TWITTER_DOTS = 3;
     var TOOLTIP_TIMEOUT = 250;
+    var FACEBOOK_DISPLAY_MODES = {
+        popup: 'popup',
+        page: 'page'
+    };
 
     var REAL_TWITTER_LIMIT = TWITTER_LIMIT_LENGTH - TWITTER_URL_LENGTH_COUNT - TWITTER_QUOTES - TWITTER_DOTS;
 
@@ -32,7 +42,8 @@
         linkedin: 'linkedin',
         stumbleupon: 'stumbleupon',
         reddit: 'reddit',
-        tumblr: 'tumblr'
+        tumblr: 'tumblr',
+        facebook: 'facebook'
     };
 
     var NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
@@ -117,6 +128,20 @@
             twitterUrl += '&via=' + parameters.twitterUsername;
         }
 
+        var facebookUrl = 'https://facebook.com/dialog/share?display=' + parameters.facebookDisplayMode + '&href=' + PAGE_URL;
+
+        if (document.querySelector('meta[property="fb:app_id"]') && document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
+            var content = document.querySelector('meta[property="fb:app_id"]');
+            facebookUrl += '&app_id=' + content;
+        } else if (parameters.facebookAppID && parameters.facebookAppID.length) {
+            facebookUrl += '&app_id=' + parameters.facebookAppID;
+        } else {
+            var idx = parameters.buttons.indexOf('facebook');
+            if (idx > -1) {
+                parameters.buttons.splice(idx, 1);
+            }
+        }
+
         var urls = {
             twitter: twitterUrl,
             buffer: 'https://buffer.com/add?text="' + text + '"&url=' + PAGE_URL,
@@ -124,7 +149,8 @@
             linkedin: 'https://www.linkedin.com/shareArticle?url=' + PAGE_URL + '&title=' + text,
             stumbleupon: 'http://www.stumbleupon.com/submit?url=' + PAGE_URL + '&title=' + text,
             reddit: 'https://reddit.com/submit?url=' + PAGE_URL + '&title=' + text,
-            tumblr: 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' + PAGE_URL + '&caption=' + text
+            tumblr: 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' + PAGE_URL + '&caption=' + text,
+            facebook: facebookUrl
         };
 
         if (urls.hasOwnProperty(socialType)) {
@@ -247,6 +273,8 @@
             buttons: [SOCIAL.twitter, SOCIAL.buffer],
             anchorsClass: '',
             twitterUsername: '',
+            facebookAppID: '',
+            facebookDisplayMode: FACEBOOK_DISPLAY_MODES.popup,
             tooltipTimeout: TOOLTIP_TIMEOUT
         }, args);
 

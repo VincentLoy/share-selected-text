@@ -36,7 +36,7 @@ shareSelectedText('.my-super-selector', {
     tooltipClass: '',    // cool, if you want to customize the tooltip
     sanitize: true,      // will sanitize the user selection to respect the Twitter Max length (recommended) 
     buttons: [           // services that you want to enable you can add : 
-        'twitter',       // - twitter, tumblr, buffer, stumbleupon, digg, reddit, linkedin
+        'twitter',       // - twitter, tumblr, buffer, stumbleupon, digg, reddit, linkedin, facebook
         'buffer'
     ],
     anchorsClass: '',    // class given to each tooltip's links
