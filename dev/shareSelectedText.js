@@ -1,5 +1,11 @@
-/**
- * Created by vincent on 6/15/16.
+/*!
+ * Share Selected Text
+ * version 1.1.0
+ * license: MIT
+ * author: Vincent Loy <vincent.loy1@gmail.com>
+ * contributors:
+ *  - Wendy Beth <wendybeth010@gmail.com>
+ *  - Dmitry Motorin <dmitry.mot@gmail.com>
  */
 (function (exports) {
     'use strict';
@@ -21,6 +27,10 @@
     const TWITTER_QUOTES = 2;
     const TWITTER_DOTS = 3;
     const TOOLTIP_TIMEOUT = 250;
+    const FACEBOOK_DISPLAY_MODES = {
+        popup: 'popup',
+        page: 'page'
+    };
 
     const REAL_TWITTER_LIMIT = TWITTER_LIMIT_LENGTH - TWITTER_URL_LENGTH_COUNT -
         TWITTER_QUOTES - TWITTER_DOTS;
@@ -104,9 +114,6 @@
     };
 
     let generateSocialUrl = function (socialType, text) {
-
-        let facebookText = smartSanitize(text);
-
         if (parameters.sanitize) {
             text = sanitizeText(text, socialType);
         } else {
@@ -119,15 +126,19 @@
             twitterUrl += `&via=${parameters.twitterUsername}`;
         }
 
-        let facebookUrl = `https://facebook.com/dialog/share?display=popup&href=${PAGE_URL}&text="${text}"`;
+        let facebookUrl = `https://facebook.com/dialog/share?display=${parameters.facebookDisplayMode}&href=${PAGE_URL}`;
 
-        if (document.querySelector('meta[property="fb:app_id"]') && document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
+        if (document.querySelector('meta[property="fb:app_id"]') &&
+            document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
           let content = document.querySelector('meta[property="fb:app_id"]');
           facebookUrl += `&app_id=${content}`;
         } else if (parameters.facebookAppID && parameters.facebookAppID.length) {
           facebookUrl += `&app_id=${parameters.facebookAppID}`;
         } else {
-          parameters.buttons.splice(parameters.buttons.indexOf('facebook'),1);
+            let idx = parameters.buttons.indexOf('facebook');
+            if (idx > -1) {
+                parameters.buttons.splice(idx, 1);
+            }
         }
 
         let urls = {
@@ -267,6 +278,7 @@
             anchorsClass: '',
             twitterUsername: '',
             facebookAppID: '',
+            facebookDisplayMode: FACEBOOK_DISPLAY_MODES.popup,
             tooltipTimeout: TOOLTIP_TIMEOUT
         }, args);
 
