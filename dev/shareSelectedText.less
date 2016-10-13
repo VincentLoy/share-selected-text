@@ -16,11 +16,13 @@
   flex-direction: column;
   z-index: 99;
   pointer-events: none;
+  visibility: hidden;
 
   &.active {
     opacity: 1;
     transform: translateY(0);
     z-index: 999;
+    visibility: visible;
   }
 
   .share-selected-text-inner {
