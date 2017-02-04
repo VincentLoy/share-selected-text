@@ -64,6 +64,9 @@ To contribute please consider to respect the following rules:
 And don't forget that you are awesome!
 
 ## Changelog
+- v1.1.1
+    - Make tooltip not clickable when not active (@DustinArmstrong)
+    
 - v1.1.0
     - Add Facebook support (Thanks to [@WendyBeth](https://github.com/WendyBeth))
 
