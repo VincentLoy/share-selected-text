@@ -9,7 +9,7 @@
   width: 100%;
   opacity: 0;
   transform: translateY(5px);
-  transition: 0.3s ease all;
+  transition: 0.3s ease opacity, 0.3s ease transform, 0.3s ease top, 0.3s ease left;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +21,10 @@
     opacity: 1;
     transform: translateY(0);
     z-index: 999;
+
+    .share-selected-text-inner {
+      pointer-events: auto;
+    }
   }
 
   .share-selected-text-inner {
@@ -30,7 +34,7 @@
     align-items: center;
     background: @color-blue;
     height: 100%;
-    pointer-events: auto;
+    pointer-events: none;
     position: relative;
 
     &:after {
