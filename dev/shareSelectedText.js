@@ -182,13 +182,9 @@
         let anchorIcon = document.createElement('i');
 
         if (parameters.anchorsClass) {
-            anchorTag.classList.add(
-                'share-selected-text-btn',
-                `share-selected-text-btn-${anchorType}`,
-                `${parameters.anchorsClass}`
-            );
+            ['share-selected-text-btn', `share-selected-text-btn-${anchorType}`, `${parameters.anchorsClass}`].map(function(item) {anchorTag.classList.add(item)});
         } else {
-            anchorTag.classList.add('share-selected-text-btn', `share-selected-text-btn-${anchorType}`);
+            ['share-selected-text-btn', `share-selected-text-btn-${anchorType}`].map(function(item) {anchorTag.classList.add(item)});
         }
 
         if (customIconClass) {
