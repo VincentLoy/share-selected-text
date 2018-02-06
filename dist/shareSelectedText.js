@@ -185,15 +185,21 @@
         var anchorIcon = document.createElement('i');
 
         if (parameters.anchorsClass) {
-            anchorTag.classList.add('share-selected-text-btn', 'share-selected-text-btn-' + anchorType, '' + parameters.anchorsClass);
+            ['share-selected-text-btn', 'share-selected-text-btn-' + anchorType, '' + parameters.anchorsClass].map(function (item) {
+                return anchorTag.classList.add(item);
+            });
         } else {
-            anchorTag.classList.add('share-selected-text-btn', 'share-selected-text-btn-' + anchorType);
+            ['share-selected-text-btn', 'share-selected-text-btn-' + anchorType].map(function (item) {
+                return anchorTag.classList.add(item);
+            });
         }
 
         if (customIconClass) {
             anchorIcon.classList.add('' + customIconClass);
         } else {
-            anchorIcon.classList.add('icon-sst-' + anchorType, 'fa', 'fa-' + anchorType);
+            ['icon-sst-' + anchorType, 'fa', 'fa-' + anchorType].map(function (item) {
+                return anchorIcon.classList.add(item);
+            });
         }
 
         anchorIcon.style.pointerEvents = 'none';

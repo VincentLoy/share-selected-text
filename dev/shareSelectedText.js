@@ -132,10 +132,10 @@
 
         if (document.querySelector('meta[property="fb:app_id"]') &&
             document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
-          let content = document.querySelector('meta[property="fb:app_id"]');
-          facebookUrl += `&app_id=${content}`;
+            let content = document.querySelector('meta[property="fb:app_id"]');
+            facebookUrl += `&app_id=${content}`;
         } else if (parameters.facebookAppID && parameters.facebookAppID.length) {
-          facebookUrl += `&app_id=${parameters.facebookAppID}`;
+            facebookUrl += `&app_id=${parameters.facebookAppID}`;
         } else {
             let idx = parameters.buttons.indexOf('facebook');
             if (idx > -1) {
@@ -182,15 +182,26 @@
         let anchorIcon = document.createElement('i');
 
         if (parameters.anchorsClass) {
-            ['share-selected-text-btn', `share-selected-text-btn-${anchorType}`, `${parameters.anchorsClass}`].map(function(item) {anchorTag.classList.add(item)});
+            [
+                'share-selected-text-btn',
+                `share-selected-text-btn-${anchorType}`,
+                `${parameters.anchorsClass}`,
+            ].map((item) => anchorTag.classList.add(item));
         } else {
-            ['share-selected-text-btn', `share-selected-text-btn-${anchorType}`].map(function(item) {anchorTag.classList.add(item)});
+            [
+                'share-selected-text-btn',
+                `share-selected-text-btn-${anchorType}`
+            ].map((item) => anchorTag.classList.add(item));
         }
 
         if (customIconClass) {
             anchorIcon.classList.add(`${customIconClass}`);
         } else {
-            anchorIcon.classList.add(`icon-sst-${anchorType}`, 'fa', `fa-${anchorType}`);
+            [
+                `icon-sst-${anchorType}`,
+                'fa',
+                `fa-${anchorType}`
+            ].map((item) => anchorIcon.classList.add(item));
         }
 
         anchorIcon.style.pointerEvents = 'none';
