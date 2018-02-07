@@ -128,7 +128,7 @@
             twitterUrl += `&via=${parameters.twitterUsername}`;
         }
 
-        let facebookUrl = `https://facebook.com/dialog/share?display=${parameters.facebookDisplayMode}&href=${PAGE_URL}&quote="${text}"`;
+        let facebookUrl = `https://facebook.com/dialog/share?display=${parameters.facebookDisplayMode}&href=${PAGE_URL}&quote=${text}`;
 
         if (document.querySelector('meta[property="fb:app_id"]') &&
             document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
