@@ -18,7 +18,7 @@
             return document.querySelector('meta[property="og:url"]').getAttribute('content');
         }
 
-        return window.location.href;
+        return encodeURIComponent(window.location.href);
     };
 
     // constants
