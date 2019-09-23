@@ -1,3 +1,5 @@
+'use strict';
+
 /*!
  * Share Selected Text
  * version: 1.1.1
@@ -9,8 +11,6 @@
  *  - Dmitry Motorin <dmitry.mot@gmail.com>
  *  - Dustin Armstrong
  */
-'use strict';
-
 (function (exports) {
     'use strict';
 
@@ -53,8 +53,8 @@
     var PAGE_URL = getPageUrl();
 
     // globals
-    var tooltip = undefined;
-    var parameters = undefined;
+    var tooltip = void 0;
+    var parameters = void 0;
     var selected = {};
 
     var extend = function extend(out) {
@@ -93,7 +93,7 @@
     };
 
     var sanitizeText = function sanitizeText(text) {
-        var sociaType = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
+        var sociaType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
         var author = '';
         var tweetLimit = REAL_TWITTER_LIMIT;
@@ -179,7 +179,7 @@
     };
 
     var generateAnchorTag = function generateAnchorTag(anchorType) {
-        var customIconClass = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+        var customIconClass = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
         var anchorTag = document.createElement('A');
         var anchorIcon = document.createElement('i');
@@ -244,7 +244,7 @@
 
     var getSelectedText = function getSelectedText() {
         var text = '';
-        var selection = undefined;
+        var selection = void 0;
 
         if (window.getSelection) {
             selection = window.getSelection();

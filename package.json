@@ -39,16 +39,21 @@
     }
   ],
   "devDependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
     "babelify": "^6.3.0",
     "gulp": "^3.9.0",
     "gulp-asset-manifest": "0.0.6",
-    "gulp-babel": "^5.2.0",
+    "gulp-babel": "7.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-less": "^3.0.3",
     "gulp-plumber": "^1.0.1",
-    "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.4.1",
     "less-plugin-autoprefix": "^1.5.1",
     "less-plugin-clean-css": "^1.5.1"
-  }
+  },
+  "dependencies": {}
 }

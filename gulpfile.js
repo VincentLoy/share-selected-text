@@ -4,14 +4,13 @@
 (function () {
     'use strict';
 
-    var concat = require('gulp-concat'),
+    let concat = require('gulp-concat'),
         babel = require('gulp-babel'),
         gulp = require('gulp'),
         plumber = require('gulp-plumber'),
         uglify = require('gulp-uglify'),
         less = require('gulp-less'),
         glob = require('glob'),
-        sourcemaps = require('gulp-sourcemaps'),
 
         LessPluginCleanCSS = require('less-plugin-clean-css'),
         LessPluginAutoPrefix = require('less-plugin-autoprefix'),
