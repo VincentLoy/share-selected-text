@@ -2,7 +2,7 @@
 
 /*!
  * Share Selected Text
- * version: 1.1.1
+ * version: 1.1.5
  * license: MIT
  * url: https://github.com/VincentLoy/share-selected-text
  * author: Vincent Loy <vincent.loy1@gmail.com>
@@ -50,7 +50,6 @@
 
     var NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
     var NO_ENDS_WITH = /[ ,/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
-    var PAGE_URL = getPageUrl();
 
     // globals
     var tooltip = void 0;
@@ -124,13 +123,13 @@
             text = smartSanitize(text);
         }
 
-        var twitterUrl = 'https://twitter.com/intent/tweet?url=' + PAGE_URL + '&text="' + text + '"';
+        var twitterUrl = 'https://twitter.com/intent/tweet?url=' + getPageUrl() + '&text="' + text + '"';
 
         if (parameters.twitterUsername && parameters.twitterUsername.length) {
             twitterUrl += '&via=' + parameters.twitterUsername;
         }
 
-        var facebookUrl = 'https://facebook.com/dialog/share?display=' + parameters.facebookDisplayMode + '&href=' + PAGE_URL + '&quote=' + text;
+        var facebookUrl = 'https://facebook.com/dialog/share?display=' + parameters.facebookDisplayMode + '&href=' + getPageUrl() + '&quote=' + text;
 
         if (document.querySelector('meta[property="fb:app_id"]') && document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
             var content = document.querySelector('meta[property="fb:app_id"]');
@@ -146,12 +145,12 @@
 
         var urls = {
             twitter: twitterUrl,
-            buffer: 'https://buffer.com/add?text="' + text + '"&url=' + PAGE_URL,
-            digg: 'http://digg.com/submit?url=' + PAGE_URL + '&title=' + text,
-            linkedin: 'https://www.linkedin.com/shareArticle?url=' + PAGE_URL + '&title=' + text,
-            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + PAGE_URL + '&title=' + text,
-            reddit: 'https://reddit.com/submit?url=' + PAGE_URL + '&title=' + text,
-            tumblr: 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' + PAGE_URL + '&caption=' + text,
+            buffer: 'https://buffer.com/add?text="' + text + '"&url=' + getPageUrl(),
+            digg: 'http://digg.com/submit?url=' + getPageUrl() + '&title=' + text,
+            linkedin: 'https://www.linkedin.com/shareArticle?url=' + getPageUrl() + '&title=' + text,
+            stumbleupon: 'http://www.stumbleupon.com/submit?url=' + getPageUrl() + '&title=' + text,
+            reddit: 'https://reddit.com/submit?url=' + getPageUrl() + '&title=' + text,
+            tumblr: 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' + getPageUrl() + '&caption=' + text,
             facebook: facebookUrl
         };
 
