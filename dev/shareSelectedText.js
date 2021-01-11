@@ -50,7 +50,6 @@
 
     const NO_START_WITH = /[ .,!?/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
     const NO_ENDS_WITH = /[ ,/\\\+\-=*£$€:~§%^µ)(|@"{}&#><_]/g;
-    const PAGE_URL = getPageUrl();
 
     // globals
     let tooltip;
@@ -122,13 +121,13 @@
             text = smartSanitize(text);
         }
 
-        let twitterUrl = `https://twitter.com/intent/tweet?url=${PAGE_URL}&text="${text}"`;
+        let twitterUrl = `https://twitter.com/intent/tweet?url=${getPageUrl()}&text="${text}"`;
 
         if (parameters.twitterUsername && parameters.twitterUsername.length) {
             twitterUrl += `&via=${parameters.twitterUsername}`;
         }
 
-        let facebookUrl = `https://facebook.com/dialog/share?display=${parameters.facebookDisplayMode}&href=${PAGE_URL}&quote=${text}`;
+        let facebookUrl = `https://facebook.com/dialog/share?display=${parameters.facebookDisplayMode}&href=${getPageUrl()}&quote=${text}`;
 
         if (document.querySelector('meta[property="fb:app_id"]') &&
             document.querySelector('meta[property="fb:app_id"]').getAttribute('content')) {
@@ -145,12 +144,12 @@
 
         let urls = {
             twitter: twitterUrl,
-            buffer: `https://buffer.com/add?text="${text}"&url=${PAGE_URL}`,
-            digg: `http://digg.com/submit?url=${PAGE_URL}&title=${text}`,
-            linkedin: `https://www.linkedin.com/shareArticle?url=${PAGE_URL}&title=${text}`,
-            stumbleupon: `http://www.stumbleupon.com/submit?url=${PAGE_URL}&title=${text}`,
-            reddit: `https://reddit.com/submit?url=${PAGE_URL}&title=${text}`,
-            tumblr: `https://www.tumblr.com/widgets/share/tool?canonicalUrl=${PAGE_URL}&caption=${text}`,
+            buffer: `https://buffer.com/add?text="${text}"&url=${getPageUrl()}`,
+            digg: `http://digg.com/submit?url=${getPageUrl()}&title=${text}`,
+            linkedin: `https://www.linkedin.com/shareArticle?url=${getPageUrl()}&title=${text}`,
+            stumbleupon: `http://www.stumbleupon.com/submit?url=${getPageUrl()}&title=${text}`,
+            reddit: `https://reddit.com/submit?url=${getPageUrl()}&title=${text}`,
+            tumblr: `https://www.tumblr.com/widgets/share/tool?canonicalUrl=${getPageUrl()}&caption=${text}`,
             facebook: facebookUrl
         };
 
